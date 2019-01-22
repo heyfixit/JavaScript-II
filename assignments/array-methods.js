@@ -87,6 +87,7 @@ console.log(emails);
 
 // Problem 3: Most generous shirt size
 
+// Brought over this function from callbacks.js to make a list of unique shirt sizes
 function removeDuplicates(array, cb) {
   // removeDuplicates removes all duplicate values from the given array.
   // Pass the duplicate free array to the callback function.
@@ -101,8 +102,9 @@ function removeDuplicates(array, cb) {
   return cb(uniques);
 }
 
+// get a list of unique sizes
 const mostGenerous = removeDuplicates(runners.map((r) => r.shirt_size), (unique_sizes) => {
-  debugger
+  // for each unique_size, sum its donations, reduce out the group with the highest donation
   const mostGenerousSize = unique_sizes.reduce((accu, cur) => {
     const runnersWithSize = runners.filter((r) => r.shirt_size === cur);
     const moneyForSize = runnersWithSize.reduce((a,c) => a + c.donation, 0);
